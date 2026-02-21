@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+ .clock{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+ }
+#hour{
+   display: block;
+   font-size: 7rem;
+   background: red;
+}
+#minute{
+   display: block;
+   font-size: 5rem;
+   background: yellow;
+}
+#second{
+   display: block;
+   font-size: 3rem;
+   background: green;
+}
+#period{
+   display: block;
+   font-size: 2rem;
+}
+
+
+    </style>
+</head>
+<body>
+   <div class="clock">
+      <span id="hour">00</span>
+      <span id="minute">00</span>
+      <span id="second">00</span>
+      <span id="period">AM</span>
+   </div>
+    <script>
+function clock(){
+   var hour = document.getElementById('hour');
+   var minute = document.getElementById('minute');
+   var second = document.getElementById('second');
+   var period = document.getElementById('period');
+
+   var date = new Date();
+   var h = date.getHours();
+   var m = date.getMinutes();
+   var s = date.getSeconds();
+
+   if(h > 12){
+      h = h -12;
+   };
+   h = h <= 9 ? "0"+h : h;
+   m = m <= 9 ? "0"+m : m;
+   s = s <= 9 ? "0"+s : s;
+
+   hour.innerHTML = h;
+   minute.innerHTML = m;
+   second.innerHTML = s;
+   period.innerHTML = ampm;
+}
+setInterval(clock, 1000);
+    </script>
+</body>
+</html>
